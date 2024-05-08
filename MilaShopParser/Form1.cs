@@ -12,8 +12,8 @@ namespace MilaShopParser
         {
             InitializeComponent();
             label3.Visible = false;
-            dataGridView2.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
 
         }
@@ -44,7 +44,7 @@ namespace MilaShopParser
             {
                 MessageBox.Show("Введенное число должно быть больше 0. Пожалуйста, введите число больше 0.");
             }
-            List<string> pages = ParseLinkSection.ParseLinkMila();
+            List<string> pages = await ParseLinkSection.ParseLinkMilaAsync();
 
             List<string> alllinks = await SitePages.ParsePageAsync(pages[selectedItem + 2]);
             List<Product> products = [];
@@ -61,7 +61,7 @@ namespace MilaShopParser
                 label3.Visible = false;
                 Product product = await ParseProduct.ParseSinglePageAsync(alllinks[i]);
                 products.Add(product);
-                dataGridView2.Rows.Add(i + 1, product.Name, product.DiscountPrice, product.FullPrice,
+                dataGridView1.Rows.Add(i + 1, product.Name, product.DiscountPrice, product.FullPrice,
                     product.Brand, product.Provider, product.AdressProvider, product.CountryOfOrigin);
                 saveProducts.Add(product);
             }
@@ -72,7 +72,7 @@ namespace MilaShopParser
 
         private void Clean_Click(object sender, EventArgs e)
         {
-            dataGridView2.Rows.Clear();
+            dataGridView1.Rows.Clear();
         }
 
         private void Save_Click(object sender, EventArgs e)

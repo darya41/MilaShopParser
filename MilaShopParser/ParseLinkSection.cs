@@ -1,18 +1,19 @@
-﻿using HtmlAgilityPack;
+﻿using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace ParseMila
 {
     public class ParseLinkSection
     {
-        public static List<string> ParseLinkMila()
+        public static async Task<List<string>> ParseLinkMilaAsync()
         {
 
             string url = "https://mila.by/";
-            var web = new HtmlWeb();
-            var htmlDocument = web.Load(url);
+            string htmlContent = await MilaShopParser.HttpClientHelper.LoadPageAsync(url);
+
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(htmlContent);
 
             var linkNodes = htmlDocument.DocumentNode.SelectNodes("//div[@class='limited-container']//a[@class='link']");
-            Console.WriteLine(htmlDocument);
 
             List<string> links = [];
 

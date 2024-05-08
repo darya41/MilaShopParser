@@ -28,26 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             comboBox1 = new ComboBox();
             label1 = new Label();
             label2 = new Label();
             KolProducts = new TextBox();
             GoToParse = new Button();
-            dataGridView2 = new DataGridView();
-            Column8 = new DataGridViewTextBoxColumn();
-            Column9 = new DataGridViewTextBoxColumn();
-            Column10 = new DataGridViewTextBoxColumn();
-            Column11 = new DataGridViewTextBoxColumn();
-            Column12 = new DataGridViewTextBoxColumn();
-            Поставщик = new DataGridViewTextBoxColumn();
-            Column13 = new DataGridViewTextBoxColumn();
-            Column14 = new DataGridViewTextBoxColumn();
-            label3 = new Label();
             Clean = new Button();
             saveFileDialog1 = new SaveFileDialog();
             Save = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            dataGridView1 = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
+            Column15 = new DataGridViewTextBoxColumn();
+            label3 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // comboBox1
@@ -99,109 +100,6 @@
             GoToParse.UseVisualStyleBackColor = true;
             GoToParse.Click += GoToParse_Click;
             // 
-            // dataGridView2
-            // 
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Column8, Column9, Column10, Column11, Column12, Поставщик, Column13, Column14 });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView2.Location = new Point(49, 103);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 82;
-            dataGridView2.Size = new Size(2794, 1186);
-            dataGridView2.TabIndex = 7;
-            // 
-            // Column8
-            // 
-            Column8.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Column8.FillWeight = 441.025635F;
-            Column8.HeaderText = "№";
-            Column8.MaxInputLength = 32769;
-            Column8.MinimumWidth = 10;
-            Column8.Name = "Column8";
-            Column8.ReadOnly = true;
-            Column8.Width = 86;
-            // 
-            // Column9
-            // 
-            Column9.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Column9.FillWeight = 51.2820549F;
-            Column9.HeaderText = "Название";
-            Column9.MinimumWidth = 10;
-            Column9.Name = "Column9";
-            Column9.Width = 116;
-            // 
-            // Column10
-            // 
-            Column10.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Column10.FillWeight = 51.2820549F;
-            Column10.HeaderText = "скидочная цена";
-            Column10.MinimumWidth = 10;
-            Column10.Name = "Column10";
-            Column10.Width = 151;
-            // 
-            // Column11
-            // 
-            Column11.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Column11.FillWeight = 51.2820549F;
-            Column11.HeaderText = "полная цена ";
-            Column11.MinimumWidth = 10;
-            Column11.Name = "Column11";
-            Column11.Width = 135;
-            // 
-            // Column12
-            // 
-            Column12.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Column12.FillWeight = 51.2820549F;
-            Column12.HeaderText = "Бренд";
-            Column12.MinimumWidth = 10;
-            Column12.Name = "Column12";
-            Column12.Width = 107;
-            // 
-            // Поставщик
-            // 
-            Поставщик.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Поставщик.FillWeight = 51.2820549F;
-            Поставщик.HeaderText = "Поставщик";
-            Поставщик.MinimumWidth = 10;
-            Поставщик.Name = "Поставщик";
-            Поставщик.Width = 126;
-            // 
-            // Column13
-            // 
-            Column13.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Column13.FillWeight = 51.2820549F;
-            Column13.HeaderText = "Адрес поставщика";
-            Column13.MinimumWidth = 10;
-            Column13.Name = "Column13";
-            Column13.Width = 167;
-            // 
-            // Column14
-            // 
-            Column14.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Column14.FillWeight = 51.2820549F;
-            Column14.HeaderText = "Страна происхождения ";
-            Column14.MinimumWidth = 10;
-            Column14.Name = "Column14";
-            Column14.Width = 193;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 48F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.Location = new Point(753, 681);
-            label3.Name = "label3";
-            label3.Size = new Size(778, 170);
-            label3.TabIndex = 8;
-            label3.Text = "loging...........";
-            // 
             // Clean
             // 
             Clean.Font = new Font("Trebuchet MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -224,15 +122,113 @@
             Save.UseVisualStyleBackColor = true;
             Save.Click += Save_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = SystemColors.Control;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column15 });
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Trebuchet MS", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.Location = new Point(32, 106);
+            dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.RowHeadersWidth = 82;
+            dataGridView1.Size = new Size(2811, 1174);
+            dataGridView1.TabIndex = 11;
+            // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Column1.HeaderText = "№";
+            Column1.MinimumWidth = 10;
+            Column1.Name = "Column1";
+            Column1.Width = 86;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Название ";
+            Column2.MinimumWidth = 10;
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Column3.HeaderText = "Скидочная цена";
+            Column3.MinimumWidth = 10;
+            Column3.Name = "Column3";
+            Column3.Width = 171;
+            // 
+            // Column4
+            // 
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Column4.HeaderText = "Полная цена ";
+            Column4.MinimumWidth = 10;
+            Column4.Name = "Column4";
+            Column4.Width = 137;
+            // 
+            // Column5
+            // 
+            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Column5.HeaderText = "Бренд";
+            Column5.MinimumWidth = 10;
+            Column5.Name = "Column5";
+            Column5.Width = 107;
+            // 
+            // Column6
+            // 
+            Column6.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Column6.HeaderText = "Поставщик";
+            Column6.MinimumWidth = 10;
+            Column6.Name = "Column6";
+            Column6.Width = 126;
+            // 
+            // Column7
+            // 
+            Column7.HeaderText = "Адрес поставщика";
+            Column7.MinimumWidth = 10;
+            Column7.Name = "Column7";
+            // 
+            // Column15
+            // 
+            Column15.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Column15.HeaderText = "Страна происхождения ";
+            Column15.MinimumWidth = 10;
+            Column15.Name = "Column15";
+            Column15.Width = 193;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Trebuchet MS", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(463, 613);
+            label3.Name = "label3";
+            label3.Size = new Size(1988, 240);
+            label3.TabIndex = 12;
+            label3.Text = "Loging ..................";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2884, 1429);
+            Controls.Add(label3);
+            Controls.Add(dataGridView1);
             Controls.Add(Save);
             Controls.Add(Clean);
-            Controls.Add(label3);
-            Controls.Add(dataGridView2);
             Controls.Add(GoToParse);
             Controls.Add(KolProducts);
             Controls.Add(label2);
@@ -241,7 +237,7 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form";
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -252,18 +248,18 @@
         private Label label2;
         private TextBox KolProducts;
         private Button GoToParse;
-        private DataGridView dataGridView2;
-        private Label label3;
         private Button Clean;
-        private DataGridViewTextBoxColumn Column8;
-        private DataGridViewTextBoxColumn Column9;
-        private DataGridViewTextBoxColumn Column10;
-        private DataGridViewTextBoxColumn Column11;
-        private DataGridViewTextBoxColumn Column12;
-        private DataGridViewTextBoxColumn Поставщик;
-        private DataGridViewTextBoxColumn Column13;
-        private DataGridViewTextBoxColumn Column14;
         private SaveFileDialog saveFileDialog1;
         private Button Save;
+        private DataGridView dataGridView1;
+        private Label label3;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column7;
+        private DataGridViewTextBoxColumn Column15;
     }
 }

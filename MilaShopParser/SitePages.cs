@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using MilaShopParser;
+using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace ParseMila
 {
@@ -9,11 +10,13 @@ namespace ParseMila
             List<string> allLinks = [];
             var tasks = new List<Task<List<string>>>();
 
-            var web = new HtmlWeb();
             string url = "https://mila.by/" + page;
-            var htmlDocument = await web.LoadFromWebAsync(url);
+            var htmlContent = await HttpClientHelper.LoadPageAsync(url);
 
-            var semaphore = new SemaphoreSlim(10);
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(htmlContent);
+
+            var semaphore = new SemaphoreSlim(15);
 
             if (htmlDocument.DocumentNode.SelectSingleNode("//a[@class='pagination']") == null)
             {
@@ -40,16 +43,17 @@ namespace ParseMila
 
         public static async Task<List<string>> ParseOne(string url, SemaphoreSlim semaphore)
         {
-            await semaphore.WaitAsync(); 
+            await semaphore.WaitAsync();
 
             List<string> linksOnPage = [];
             List<string> links = [];
             try
             {
                 Console.WriteLine("Паршу страницу  " + url + "\n");
-                using var httpClient = new HttpClient();
-                var web = new HtmlWeb();
-                var htmlDocument = await web.LoadFromWebAsync(url);
+                var htmlContent = await HttpClientHelper.LoadPageAsync(url);
+
+                var htmlDocument = new HtmlDocument();
+                htmlDocument.LoadHtml(htmlContent);
 
                 if (htmlDocument != null)
                 {
@@ -69,10 +73,9 @@ namespace ParseMila
             }
             finally
             {
-                semaphore.Release(); 
+                semaphore.Release();
             }
             return links;
         }
-
     }
 }
