@@ -44,7 +44,7 @@ namespace MilaShopParser
             {
                 MessageBox.Show("Введенное число должно быть больше 0. Пожалуйста, введите число больше 0.");
             }
-            List<string> pages = await ParseLinkSection.ParseLinkMilaAsync();
+            List<string> pages =await ParseLinkSection.ParseLinkMilaAsync();
 
             List<string> alllinks = await SitePages.ParsePageAsync(pages[selectedItem + 2]);
             List<Product> products = [];

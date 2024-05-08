@@ -16,7 +16,7 @@ namespace ParseMila
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(htmlContent);
 
-            var semaphore = new SemaphoreSlim(15);
+            var semaphore = new SemaphoreSlim(32);
 
             if (htmlDocument.DocumentNode.SelectSingleNode("//a[@class='pagination']") == null)
             {
