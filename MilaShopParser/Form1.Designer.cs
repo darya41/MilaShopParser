@@ -30,11 +30,10 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            comboBox1 = new ComboBox();
+            ListSection = new ComboBox();
             label1 = new Label();
             label2 = new Label();
-            KolProducts = new TextBox();
-            GoToParse = new Button();
+            StartParsing = new Button();
             Clean = new Button();
             saveFileDialog1 = new SaveFileDialog();
             Save = new Button();
@@ -47,19 +46,21 @@
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             Column15 = new DataGridViewTextBoxColumn();
-            label3 = new Label();
+            logingStatus = new Label();
+            Count = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Count).BeginInit();
             SuspendLayout();
             // 
-            // comboBox1
+            // ListSection
             // 
-            comboBox1.Font = new Font("Trebuchet MS", 16.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "wow-цены", "Лицо", "Уход за телом", "Гигиена", "Волосы", "Макияж и парфимерия ", "Для детей и мам", "Для мужчин", "Стирка и уборка", "Дом и отдых", "Мода и украшение", "Колготки и носки ", "Кэшбек за покупки" });
-            comboBox1.Location = new Point(1183, 16);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(509, 62);
-            comboBox1.TabIndex = 1;
+            ListSection.Font = new Font("Trebuchet MS", 16.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ListSection.FormattingEnabled = true;
+            ListSection.Location = new Point(1183, 16);
+            ListSection.Name = "ListSection";
+            ListSection.Size = new Size(509, 62);
+            ListSection.TabIndex = 1;
+            ListSection.SelectedIndexChanged += ListSection_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -81,24 +82,16 @@
             label2.TabIndex = 3;
             label2.Text = "Какое количество продуктов";
             // 
-            // KolProducts
+            // StartParsing
             // 
-            KolProducts.Font = new Font("Trebuchet MS", 16.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            KolProducts.Location = new Point(2320, 21);
-            KolProducts.Name = "KolProducts";
-            KolProducts.Size = new Size(131, 57);
-            KolProducts.TabIndex = 4;
-            // 
-            // GoToParse
-            // 
-            GoToParse.Font = new Font("Trebuchet MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GoToParse.Location = new Point(2535, 12);
-            GoToParse.Name = "GoToParse";
-            GoToParse.Size = new Size(293, 73);
-            GoToParse.TabIndex = 5;
-            GoToParse.Text = "Начать ";
-            GoToParse.UseVisualStyleBackColor = true;
-            GoToParse.Click += GoToParse_Click;
+            StartParsing.Font = new Font("Trebuchet MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            StartParsing.Location = new Point(2535, 12);
+            StartParsing.Name = "StartParsing";
+            StartParsing.Size = new Size(293, 73);
+            StartParsing.TabIndex = 5;
+            StartParsing.Text = "Начать ";
+            StartParsing.UseVisualStyleBackColor = true;
+            StartParsing.Click += StartParsing_Click;
             // 
             // Clean
             // 
@@ -110,6 +103,11 @@
             Clean.Text = "Очистить";
             Clean.UseVisualStyleBackColor = true;
             Clean.Click += Clean_Click;
+            // 
+            // saveFileDialog1
+            // 
+            saveFileDialog1.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+            saveFileDialog1.RestoreDirectory = true;
             // 
             // Save
             // 
@@ -210,49 +208,58 @@
             Column15.Name = "Column15";
             Column15.Width = 193;
             // 
-            // label3
+            // logingStatus
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Trebuchet MS", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(463, 613);
-            label3.Name = "label3";
-            label3.Size = new Size(1988, 240);
-            label3.TabIndex = 12;
-            label3.Text = "Loging ..................";
+            logingStatus.AutoSize = true;
+            logingStatus.Font = new Font("Trebuchet MS", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            logingStatus.Location = new Point(463, 613);
+            logingStatus.Name = "logingStatus";
+            logingStatus.Size = new Size(1988, 240);
+            logingStatus.TabIndex = 12;
+            logingStatus.Text = "Loging ..................";
+            // 
+            // Count
+            // 
+            Count.Font = new Font("Trebuchet MS", 16.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Count.Location = new Point(2329, 22);
+            Count.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            Count.Name = "Count";
+            Count.Size = new Size(192, 57);
+            Count.TabIndex = 13;
+            Count.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2884, 1429);
-            Controls.Add(label3);
+            Controls.Add(Count);
+            Controls.Add(logingStatus);
             Controls.Add(dataGridView1);
             Controls.Add(Save);
             Controls.Add(Clean);
-            Controls.Add(GoToParse);
-            Controls.Add(KolProducts);
+            Controls.Add(StartParsing);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(comboBox1);
+            Controls.Add(ListSection);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Count).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private ComboBox comboBox1;
+        private ComboBox ListSection;
         private Label label1;
         private Label label2;
-        private TextBox KolProducts;
-        private Button GoToParse;
+        private Button StartParsing;
         private Button Clean;
         private SaveFileDialog saveFileDialog1;
         private Button Save;
         private DataGridView dataGridView1;
-        private Label label3;
+        private Label logingStatus;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
@@ -261,5 +268,6 @@
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn Column15;
+        private NumericUpDown Count;
     }
 }

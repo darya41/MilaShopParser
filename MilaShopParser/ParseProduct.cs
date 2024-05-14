@@ -5,16 +5,54 @@ namespace ParseMila
 {
     public class ParseProduct
     {
-        public static async Task<Product> ParseSinglePageAsync(string url)
+        public static async Task<List<Product>> GetProducts(string url, int countProduct)
         {
-            var product = await ParsePage(url);
-            await Task.Delay(1000);
+            List<string> allLinks = await ParseTools.GetAllLinkProduct(url, countProduct);
+            List<Product> products = new();
+            List<Task<Product>> tasks = new();
+
+            foreach (string link in allLinks)
+            {
+                tasks.Add(GetProductFromLink(link));
+
+                if (tasks.Count == 10)
+                {
+                    products.AddRange(await ProcessTasks(tasks));
+                }
+            }
+
+            if (tasks.Count > 0)
+            {
+                products.AddRange(await ProcessTasks(tasks));
+            }
+
+            return products;
+        }
+
+        private static async Task<Product> GetProductFromLink(string link)
+        {
+            var product = await ParsePage(link);
+            await DelayRandomTime();
             return product;
+        }
+
+        private static async Task DelayRandomTime()
+        {
+            Random random = new();
+            int time = random.Next(1000, 5000);
+            await Task.Delay(time);
+        }
+
+        private static async Task<List<Product>> ProcessTasks(List<Task<Product>> tasks)
+        {
+            var completedTasks = await Task.WhenAll(tasks);
+            tasks.Clear();
+            return completedTasks.ToList();
         }
 
         private static async Task<Product> ParsePage(string url)
         {
-            Product p = new(" ", " ", " ", " ", " ", " ", " ");
+            Product p = new();
 
             string htmlContent = await HttpClientHelper.LoadPageAsync(url);
 
